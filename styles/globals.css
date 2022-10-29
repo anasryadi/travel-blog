@@ -1,0 +1,35 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: rbg(70, 70, 70);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* App */
+.app-container {
+    background-color: rgb(145, 156, 143);
+}
+
+/* NavBar */
+nav.nav-container {
+    background-color: rgb(255, 255, 255);
+    min-height: 100vh;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav.nav-container .nav-item-container {
+    padding: 30px;
+}
+
+
+/* HomePage */
+.posts-container {}
