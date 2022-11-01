@@ -7,7 +7,7 @@ import Card from "../Components/Card";
 const Home = ({ posts }) => {
   console.log(posts);
   return (
-    <div>
+    <div className="dashboard">
       <Head>
         <title>Nomar Travel Blog</title>
         <meta name="viewport" content="inital-scale=1.0, width=device-width" />
