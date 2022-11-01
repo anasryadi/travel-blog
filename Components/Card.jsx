@@ -1,4 +1,5 @@
 import { urlFor } from "../lib/sanity";
+import Tag from "./Tag";
 
 const Card = ({ post }) => {
   return (
@@ -23,9 +24,9 @@ const Card = ({ post }) => {
       </div>
 
       <div className="tag-container">
-        {/* {post.categories.map((category) => {
-            <Tag key={category.id} title={category.title}/>
-          })} */}
+        {post.categories.map((category) => (
+          <>{category && <Tag key={category} title={category?.title} />}</>
+        ))}
       </div>
     </div>
   );
