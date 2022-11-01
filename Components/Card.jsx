@@ -2,29 +2,31 @@ import { urlFor } from "../lib/sanity";
 import Tag from "./Tag";
 
 const Card = ({ post }) => {
+  const { title, publishedAt, mainImage, authorImage, categories } = post
+
   return (
     <div className="card-container">
-      <h2>{post.title}</h2>
-      <p>Published on: {new Date(post.publishedAt).toDateString()}</p>
+      <h2>{title}</h2>
+      <p>Published on: {new Date(publishedAt).toDateString()}</p>
       <img
         className="main-image"
-        alt={post.title + "image"}
-        src={urlFor(post.mainImage)}
+        alt={title + "image"}
+        src={urlFor(mainImage)}
       />
 
       <hr />
 
       <div className="info-container">
-        <p>Posted by: {post.username}</p>
+        <p>Posted by: {username}</p>
         <img
           className="avatar"
-          alt={post.username + "avatar"}
-          src={urlFor(post.authorImage)}
+          alt={username + "avatar"}
+          src={urlFor(authorImage)}
         />
       </div>
 
       <div className="tag-container">
-        {post.categories.map((category) => (
+        {categories.map((category) => (
           <>{category && <Tag key={category} title={category?.title} />}</>
         ))}
       </div>

@@ -5,9 +5,13 @@ import { urlFor } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
 
 const Post = ({ post }) => {
-  console.log(post);
 
-  return <div></div>;
+  const { title, categories, body, authorImage, username, about, postedAt } = post
+
+  return (
+    <div></div>
+  )
+
 };
 const query = groq`*[_type == "post" && slug.current == $slug][0] {
     title,
