@@ -3,6 +3,7 @@ import Tag from "../../Components/Tag";
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
+import Map from "../../Components/Map";
 
 
 const PostComponents = {
