@@ -4,14 +4,65 @@ import { PortableText } from "@portabletext/react";
 import { urlFor } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
 
-const Post = ({ post }) => {
 
-  const { title, categories, body, authorImage, username, about, postedAt } = post
+const PostComponents = {
+    types: {
+        image: ({ value }) => {
+            return (
+                <img
+                className="post-image"
+                alt={value.alt || ''}
+                src={urlFor(value)}
+                />
+            )
+        }
+    }
+}
+
+const Post = ({ post }) => {
+  const { title, categories, body, authorImage, username, about, postedAt } =
+    post;
 
   return (
-    <div></div>
-  )
+    <>
+      {post && (
+        <article className="post-container">
+          <h1>{title}</h1>
+          <hr />
+          <div className="tag-container">
+            {categories?.map((category) => (
+              <>
+                {category && <Tag key={category.id} title={category.title} />}
+              </>
+            ))}
+          </div>
 
+          <PortableText value={body} components={PostComponents} />
+
+          <hr />
+
+          <div className="info-container">
+            <div className="author-container">
+              <img
+                className="avatar"
+                src={urlFor(authorImage).url()}
+                alt={username + "avatar"}
+              />
+              <h3>
+                Author: <strong>{username}</strong>
+              </h3>
+              <p>About Author</p>
+              {/* <PortableText value={about} components={PostComponents} /> */}
+              <p>{about}</p>
+            </div>
+            <div className="map-container">
+
+            </div>
+          </div>
+        </article>
+      )}
+    </>
+  );
 };
 const query = groq`*[_type == "post" && slug.current == $slug][0] {
     title,

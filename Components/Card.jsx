@@ -2,7 +2,7 @@ import { urlFor } from "../lib/sanity";
 import Tag from "./Tag";
 
 const Card = ({ post }) => {
-  const { title, publishedAt, mainImage, authorImage, categories } = post
+  const { title, publishedAt, mainImage, username, authorImage, categories } = post
 
   return (
     <div className="card-container">
@@ -10,7 +10,7 @@ const Card = ({ post }) => {
       <p>Published on: {new Date(publishedAt).toDateString()}</p>
       <img
         className="main-image"
-        alt={title + "image"}
+        alt={title + " image"}
         src={urlFor(mainImage)}
       />
 
