@@ -4,10 +4,8 @@ import { useRef, useEffect } from 'react'
 
 const Map = () => {
 
-    const NEXT_PUBLIC_MAP_API = 'pk.eyJ1IjoiYW5hc3J5YWRpIiwiYSI6ImNsOXpiaThkbDA3OTkzbm1xaDRwNTNtaDgifQ.Zq4gNK8gNf5BTdJLr3Kd_A'
 
-
-    mapboxgl.accessToken = NEXT_PUBLIC_MAP_API
+    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAP_API
 
     const mapContainer = useRef(null)
     const map = useRef(null)
@@ -26,7 +24,7 @@ const Map = () => {
     }, [longitude, latitude])
 
   return (
-    <div>Map</div>
+    <div ref={mapContainer} className="map" />
   )
 }
 

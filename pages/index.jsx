@@ -16,7 +16,9 @@ const Home = ({ posts }) => {
         {posts?.map((post) => (
           <Link
           key={post._id}
-          href="/"
+          href="/posts/[slug]"
+          as={`/posts/${post.slug.current}`}
+          passHref
           >
             <Card post={post} />
           </Link>
@@ -26,7 +28,7 @@ const Home = ({ posts }) => {
   );
 };
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps = async ({ preview = false }) => {
   const posts = await getClient(preview).fetch(groq`
   *[_type == "post" && publishedAt < now()] | order(publishedAt desc) {
     _id,

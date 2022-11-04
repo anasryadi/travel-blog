@@ -5,20 +5,15 @@ import { urlFor } from "../../lib/sanity";
 import { getClient } from "../../lib/sanity.server";
 import Map from "../../Components/Map";
 
-
 const PostComponents = {
-    types: {
-        image: ({ value }) => {
-            return (
-                <img
-                className="post-image"
-                alt={value.alt || ''}
-                src={urlFor(value)}
-                />
-            )
-        }
-    }
-}
+  types: {
+    image: ({ value }) => {
+      return (
+        <img className="post-image" alt={value.alt || ""} src={urlFor(value)} />
+      );
+    },
+  },
+};
 
 const Post = ({ post }) => {
   const { title, categories, body, authorImage, username, about, postedAt } =
@@ -57,7 +52,7 @@ const Post = ({ post }) => {
               <p>{about}</p>
             </div>
             <div className="map-container">
-
+              {/* <Map longitude={postedAt.lng} latitude={postedAt.lat} /> */}
             </div>
           </div>
         </article>
@@ -77,7 +72,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0] {
     postedAt
 }`;
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const paths = await getClient().fetch(
     groq`*[_type == "post" && defined(slug.current)][].slug.current`
   );
@@ -87,7 +82,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export const getStaticProps = async ({ params, preview = false }) => {
   const post = await getClient(preview).fetch(query, { slug: params.slug });
 
   return {

@@ -11,7 +11,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="nav-item-container">
-        <p>xxxx</p>
+        <p>A Blog By Anas</p>
       </div>
     </nav>
   );
