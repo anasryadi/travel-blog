@@ -5,20 +5,20 @@ import Link from "next/Link";
 import Card from "../Components/Card";
 
 const Home = ({ posts }) => {
-  console.log(posts);
+  // console.log(posts);
   return (
     <div className="dashboard">
       <Head>
-        <title>Nomar Travel Blog</title>
+        <title>Nomad Travel Blog</title>
         <meta name="viewport" content="inital-scale=1.0, width=device-width" />
       </Head>
       <div className="posts-container">
         {posts?.map((post) => (
           <Link
-          key={post._id}
-          href="/posts/[slug]"
-          as={`/posts/${post.slug.current}`}
-          passHref
+            key={post._id}
+            href="/posts/[slug]"
+            as={`/posts/${post.slug.current}`}
+            passHref
           >
             <Card post={post} />
           </Link>
@@ -47,6 +47,6 @@ export const getStaticProps = async ({ preview = false }) => {
       posts,
     },
   };
-}
+};
 
 export default Home;
